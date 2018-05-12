@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shopping List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" type='text/css'>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Shopping List</h1>
+
+    <form id="js-shopping-list-form">
+      <label for="shopping-list-entry">Add an item</label>
+      <input class="js-shopping-list-entry" type="text" name="shopping-list-entry" placeholder="e.g., broccoli">
+      <button type="submit">Add</button>
+      <lable for="display-toggle">Display Unchecked Only</lable>
+      <input class="js-display-toggle" type="checkbox" name="display-toggle" id="display-toggle">
+      <lable for="search-entry">Search for List Item</lable>
+      <input class="js-search-entry" type="text" name="search-entry" placeholder="e.g., broccoli">
+      <button class="js-search-button" type="submit">Search</button>
+      
+      
+    </form>
+
+    <ul class="shopping-list">
+    </ul>
+  </div>
+  <script src="//code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
