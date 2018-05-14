@@ -24,8 +24,11 @@ function filterCheckedListItem(){
   return STORE.filter((item) => !item.checked);
 }
 
-function filterSearchedListItem(){
-  return STORE.filter((item) => item.name);
+function filterSearchedListItem(searchItem){
+  console.log('im here')
+  return STORE.filter((item) => item.name == searchItem);
+
+
 }
 
 function generateItemEl(item, itemIndex, template) {
@@ -49,9 +52,7 @@ function generateShoppingListItemsString(shoppingList) {
 }
 
 function getItemIndexFromEl(item) {
-  const itemIndexString = $(item)
-    .closest('.js-item-index-element')
-    .attr('data-item-index');
+  const itemIndexString = $(item).closest('.js-item-index-element').attr('data-item-index');
   return parseInt(itemIndexString, 10);
 } 
 
@@ -102,30 +103,32 @@ function handleDisplayToggle() {
 }
 
 function handleDisplaySearch() {
-  $('#js-shopping-list-form').submit(function(event){
+  $('#js-search-list-form').submit(function(event){
     event.preventDefault();
-    console.log('HELLO');
     const searchItem = $('.js-search-entry').val();
-    console.log(searchItem);
     $('.js-search-entry').val('');
     let data = [];
-    
-    if (searchItem == STORE.name){
-      data = filterSearchedListItem(searchItem);
+    if (searchItem !== ''){
+      data = filterSearchedListItem(searchItem)
     }
-    else{
-      data = STORE;
+    else {
+      data = STORE
     }
-    console.log(data);
     renderShoppingList(data);
   });
 }
 
+function handleClearSearch() {
+ // $('#js-clear-search-form').submit(function(event){
+    
+}
+  
 $(function(){
   handleItemInput();
   handleItemDelete();
   handleItemToggle();
   handleDisplayToggle();
   handleDisplaySearch();
+  handleClearSearch();
   renderShoppingList();
 });
